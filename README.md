@@ -1,5 +1,7 @@
 # ⚛️ Day 12: Enterprise Task Manager UI (React)
 
+![Task Manager Preview](day12_preview.png)
+
 ## 🌟 What is this Project?
 This is a **Modern React Frontend Application** built as a premium interface for the Task Manager API (Day 4). It demonstrates my ability to transition from backend architecture into intuitive, high-performance user interfaces. Built with Vite and React 18, it features a sleek, data-driven dashboard designed for enterprise task tracking.
 
