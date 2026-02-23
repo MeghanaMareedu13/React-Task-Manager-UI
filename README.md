@@ -21,6 +21,35 @@ The goal was to build a "Recruiter-Ready" frontend that proves:
 - **📱 Responsive by Design**: Works seamlessly on mobile, tablet, and desktop.
 - **✨ Micro-Animations**: Subtle hover effects and transitions that create a "premium" feel.
 
+## 🏗️ System Architecture & Design Patterns
+
+### 1. Component Hierarchy
+The application follows a modular, tree-based component structure to ensure high maintainability and prevent unnecessary re-renders.
+
+```mermaid
+graph TD
+    App[App.jsx - Main Orchestrator]
+    App --> Header[Header Component]
+    App --> Form[TaskForm - Add Logic]
+    App --> List[TaskList Container]
+    List --> Card[TaskCard - Individual Item]
+    Card --> Controls[Status/Delete Controls]
+```
+
+### 2. State Management Strategy
+I implemented a **Single Source of Truth** pattern using React's native state management.
+- **Reactive State**: The `tasks` array is the central state. Any interaction (Adding, Toggling, Deleting) triggers an immutable state update, which React's Virtual DOM uses to efficiently patch the UI.
+- **Asynchronous Life-cycle**: Used the `useEffect` hook to manage the data-fetching lifecycle. This includes handling empty states, error boundaries, and loading indicators.
+
+### 3. Asynchronous Design (UX Resilience)
+To mirror a production environment, the app includes a **Simulated Network Latency** (800ms).
+- **Why?** This ensures the application is architected to handle real-world API delays, proving that the system remains stable and user-friendly even under high-latency conditions.
+
+### 4. Styling Architecture
+Used a **BEM-inspired custom CSS** approach (Block Element Modifier).
+- **Design Tokens**: Defined a centralized color palette and typography scale in `App.css` to ensure visual consistency across all components.
+- **Conditional Rendering**: Status-specific styles are applied dynamically based on the task's state (Priority, Completion status).
+
 ## 🛠️ How we built this: Step-by-Step
 ### Phase 1: Planning (Non-Technical)
 1.  **UX Mapping**: Defined the user journey from "task ideation" to "task completion."
